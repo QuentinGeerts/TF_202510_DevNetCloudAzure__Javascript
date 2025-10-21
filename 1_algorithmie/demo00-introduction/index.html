@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Liaison avec un CSS -->
+  <!-- link:css -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Liaison avec un Javascript -->
+  <!-- script:src -->
+  <!-- 3ème façon: depuis un fichier externe (❤️) -->
+  <!-- defer: permet diférer le chargement du script jusqu'à ce que la page html soit chargée -->
+  <script src="./script.js" defer></script>
+</head>
+
+<body>
+  <h1>Hello world !</h1>
+
+  <!-- 1ère façon: directement sur un élément HTML (💩) -->
+  <button onclick="console.log('Coucou.');">Clique sur moi</button>
+
+  <p id="p01">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt facere voluptatem ex veniam error aspernatur adipisci
+    expedita dignissimos distinctio cum rerum ratione fuga repudiandae sequi, earum consectetur quam enim accusantium!
+  </p>
+
+
+  <!-- 2eme façon: utilisant la balise script (✅) -->
+  <script>
+    // Uniquement du JS
+    console.log("Exécuté depuis ma page HTML.");
+
+    // ⚠️ à l'ordre de vos instructions
+    const p01 = document.getElementById("p01");
+
+    console.log("p01:", p01);
+  </script>
+
+</body>
+
+</html>
