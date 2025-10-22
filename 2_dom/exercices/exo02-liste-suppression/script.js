@@ -1,19 +1,8 @@
-/*
-
-  Créer un programme qui permet d'encoder un libellé et de valider avec un bouton à côté.
-  Les deux éléments doivent se situer à l'intérieur d'un formulaire.
-
-  Lorsque vous validez le formulaire, une puce (•) doit apparaitre dans une liste avec le libellé qui a entré.
-
-  Lorsque le champ a été créé, le formulaire se réinitialise et le champ se refocus.
-
-  Attention, un champs vide n'est pas toléré !
-
-*/
-
 const form = document.forms.namedItem("myForm");
+const clearButton = document.getElementById("clear-btn");
 
 form.addEventListener("submit", handleForm);
+clearButton.addEventListener("click", clearList);
 
 /**
  * Permet de gérer la validation du formulaire
@@ -41,6 +30,25 @@ function handleForm(event) {
   // Création de l'élément de liste
   const ul = document.getElementById("liste");
   const li = ul.appendChild(document.createElement("li"));
+  const btnRemove = document.createElement("button");
   li.textContent = cleanedValue;
+  li.insertAdjacentElement("beforeend", btnRemove);
+  btnRemove.textContent = "❌"
+  btnRemove.addEventListener("click", removeTask)
+}
 
+function clearList () {
+  const liste = document.getElementById("liste");
+  for (const element of liste.children) {
+    element.remove();
+  }
+}
+
+/**
+ * Permet de retirer l'élément de liste
+ *
+ * @param {PointerEvent} event
+ */
+function removeTask (event) {
+  event.target.parentElement.remove();
 }
